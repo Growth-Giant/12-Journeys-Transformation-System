@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My 12 Journeys — The Giant Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #fe7624;
+  --orange-light: #fff2e9;
+  --blue: #42abdb;
+  --blue-light: #e8f6fc;
+  --green: #0B9444;
+  --green-light: #e6f5ec;
+  --peach: #F89A29;
+  --peach-light: #fef5e8;
+  --brown: #3B2313;
+  --brown-light: #f2ebe4;
+  --ink: #111110;
+  --ink2: #3B2313;
+  --ink3: #6b6860;
+  --ink4: #9c9a92;
+  --paper: #ffffff;
+  --paper2: #f8f7f4;
+  --paper3: #ede9e0;
+  --border: rgba(59,35,19,0.1);
+  --border-mid: rgba(59,35,19,0.2);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.7; }
+
+/* COVER */
+.cover {
+  background: #000;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 72px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(254,118,36,0.04) 60px, rgba(254,118,36,0.04) 61px);
+  pointer-events: none;
+}
+.cover-lockup { display: flex; align-items: center; gap: 14px; margin-bottom: 44px; position: relative; }
+.cover-bar { width: 3px; height: 44px; background: var(--orange); flex-shrink: 0; }
+.cover-brand-name { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
+.cover-brand-sub { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; }
+.cover-tag { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); font-weight: 700; margin-bottom: 24px; position: relative; }
+.cover h1 { font-family: 'Merriweather', serif; font-size: 56px; font-weight: 300; line-height: 1.1; color: #fff; max-width: 760px; margin-bottom: 20px; position: relative; }
+.cover h1 em { font-style: italic; color: var(--orange); }
+.cover-sub { font-size: 17px; color: rgba(255,255,255,0.5); max-width: 620px; margin-bottom: 52px; font-weight: 300; line-height: 1.65; position: relative; }
+.cover-stats { display: flex; gap: 48px; flex-wrap: wrap; border-top: 1px solid rgba(254,118,36,0.2); padding-top: 28px; position: relative; }
+.cover-stat-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 5px; }
+.cover-stat-val { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 300; color: #fff; }
+
+/* NAV */
+.nav {
+  position: sticky; top: 0;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 3px solid var(--orange);
+  z-index: 100;
+  padding: 0 64px;
+  display: flex; align-items: center;
+}
+.nav-brand { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); white-space: nowrap; padding-right: 18px; border-right: 1px solid var(--border); margin-right: 4px; flex-shrink: 0; }
+.nav-inner { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; flex: 1; }
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-link { font-size: 12px; font-weight: 700; color: var(--ink3); text-decoration: none; padding: 14px 14px; white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -3px; transition: color 0.15s, border-color 0.15s; letter-spacing: 0.01em; }
+.nav-link:hover { color: var(--orange); border-bottom-color: var(--orange); }
+
+/* MAIN */
+.main { max-width: 1000px; margin: 0 auto; }
+
+/* SECTION */
+.section { padding: 72px 64px; border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: none; }
+
+/* SECTION HEADER */
+.sh { display: grid; grid-template-columns: 56px 1fr; gap: 20px; align-items: start; margin-bottom: 44px; }
+.sh-num { font-family: 'Merriweather', serif; font-size: 48px; font-weight: 300; color: var(--paper3); line-height: 1; margin-top: -4px; }
+.sh-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; display: inline-block; margin-bottom: 10px; }
+.sh-title { font-family: 'Merriweather', serif; font-size: 32px; font-weight: 300; line-height: 1.15; margin-bottom: 8px; }
+.sh-sub { font-size: 15px; color: var(--ink3); line-height: 1.6; font-weight: 300; }
+
+/* PROSE */
+p { font-size: 15.5px; color: var(--ink2); line-height: 1.82; margin-bottom: 18px; }
+h3 { font-family: 'Merriweather', serif; font-size: 20px; font-weight: 700; margin: 36px 0 12px; color: var(--ink); }
+h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink4); margin: 24px 0 8px; }
+
+/* CALLOUT */
+.callout { border-left: 3px solid; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+.callout.orange { border-color: var(--orange); background: var(--orange-light); }
+.callout.blue { border-color: var(--blue); background: var(--blue-light); }
+.callout.green { border-color: var(--green); background: var(--green-light); }
+.callout.brown { border-color: var(--brown); background: var(--brown-light); }
+.callout p { font-size: 14.5px; margin: 0; color: var(--ink2); }
+.callout p + p { margin-top: 10px; }
+.callout strong { color: var(--ink); font-weight: 700; }
+
+/* INSIGHT */
+.insight { padding: 36px 44px; background: #000; border-left: 5px solid var(--orange); border-radius: 10px; margin: 32px 0; }
+.insight-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.insight-text { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 300; line-height: 1.5; color: #fff; margin-bottom: 0; }
+
+/* JOURNEY MAP — the master grid */
+.journey-grid { display: flex; flex-direction: column; gap: 3px; margin: 28px 0; }
+.journey-row {
+  display: grid;
+  grid-template-columns: 48px 200px 1fr 1fr;
+  gap: 0;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.journey-row:hover { border-color: var(--border-mid); }
+.journey-num {
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Merriweather', serif; font-size: 20px; font-weight: 700; color: white;
+  flex-shrink: 0;
+  padding: 16px 8px;
+}
+.journey-id { padding: 14px 16px; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; }
+.journey-char { font-weight: 700; font-size: 13px; color: var(--ink); }
+.journey-theme { font-size: 12px; color: var(--ink3); margin-top: 2px; font-style: italic; }
+.journey-quote { font-size: 11px; color: var(--ink4); margin-top: 4px; line-height: 1.4; }
+.journey-mechanism { padding: 14px 16px; border-right: 1px solid var(--border); }
+.journey-mechanism h5 { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 5px; }
+.journey-mechanism p { font-size: 12.5px; margin: 0; color: var(--ink2); line-height: 1.5; }
+.journey-tool { padding: 14px 16px; }
+.journey-tool h5 { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
+.journey-tool p { font-size: 12.5px; margin: 0; color: var(--ink2); line-height: 1.5; }
+
+/* JOURNEY PHASE LABELS */
+.phase-label {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px;
+  margin: 16px 0 4px;
+  border-radius: 6px;
+}
+.phase-label-text { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.phase-label-desc { font-size: 12px; color: var(--ink3); }
+
+/* ROOT = orange, TRANSITION = peach, SHOOT = blue, FRUIT = green */
+.phase-root { background: var(--orange-light); }
+.phase-root .phase-label-text { color: #c45500; }
+.phase-transition { background: var(--peach-light); }
+.phase-transition .phase-label-text { color: #c4740a; }
+.phase-shoot { background: var(--blue-light); }
+.phase-shoot .phase-label-text { color: #1a7fa8; }
+.phase-fruit { background: var(--green-light); }
+.phase-fruit .phase-label-text { color: #0a7a38; }
+
+/* RIPPLE MAP */
+.ripple-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+.ripple-card { padding: 22px 24px; border: 1px solid var(--border); border-radius: 10px; background: white; position: relative; }
+.ripple-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 10px 10px 0 0; }
+.ripple-card.r::before { background: var(--blue); }
+.ripple-card.i::before { background: var(--orange); }
+.ripple-card.p1::before { background: var(--peach); }
+.ripple-card.p2::before { background: var(--green); }
+.ripple-card.l::before { background: var(--brown); }
+.ripple-card.e::before { background: var(--blue); }
+.ripple-letter { font-family: 'Merriweather', serif; font-size: 36px; font-weight: 300; color: var(--ink4); line-height: 1; margin-bottom: 6px; }
+.ripple-name { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.ripple-what { font-weight: 700; font-size: 13.5px; color: var(--ink); margin-bottom: 6px; }
+.ripple-card p { font-size: 13px; color: var(--ink3); margin: 0; line-height: 1.55; }
+.ripple-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; display: inline-block; margin-top: 8px; }
+
+/* THREE-A */
+.three-a { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin: 28px 0; }
+.aa-card { padding: 22px 24px; border: 1px solid var(--border); border-radius: 8px; background: white; }
+.aa-step { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; }
+.aa-card:nth-child(1) .aa-step { color: var(--blue); }
+.aa-card:nth-child(2) .aa-step { color: var(--green); }
+.aa-card:nth-child(3) .aa-step { color: var(--orange); }
+.aa-title { font-family: 'Merriweather', serif; font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 10px; }
+.aa-prompt { font-size: 13px; font-style: italic; color: var(--ink2); background: var(--paper2); padding: 10px 14px; border-radius: 6px; margin-bottom: 10px; line-height: 1.55; }
+.aa-card p { font-size: 13px; color: var(--ink3); margin: 0; line-height: 1.55; }
+
+/* LAW CARDS */
+.law-grid { display: flex; flex-direction: column; gap: 3px; margin: 28px 0; }
+.law-card { display: flex; align-items: stretch; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: white; }
+.law-num { width: 56px; background: #000; display: flex; align-items: center; justify-content: center; font-family: 'Merriweather', serif; font-size: 24px; font-weight: 300; color: var(--orange); flex-shrink: 0; }
+.law-body { padding: 16px 20px; flex: 1; border-right: 1px solid var(--border); }
+.law-name { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 3px; }
+.law-body p { font-size: 13.5px; color: var(--ink2); margin: 0; line-height: 1.5; }
+.law-science { padding: 16px 20px; flex: 1.2; background: var(--paper2); }
+.law-science h5 { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 5px; }
+.law-science p { font-size: 13px; color: var(--ink3); margin: 0; line-height: 1.5; }
+
+/* STAGE MAP TABLE */
+.stage-table { width: 100%; border-collapse: collapse; margin: 24px 0; background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); border-top: 3px solid var(--orange); font-size: 13.5px; }
+.stage-table th { background: #000; font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(254,118,36,0.2); }
+.stage-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); color: var(--ink2); vertical-align: top; line-height: 1.5; }
+.stage-table tr:last-child td { border-bottom: none; }
+.stage-table td strong { color: var(--ink); font-weight: 700; }
+.stage-table td em { font-style: italic; color: var(--orange); }
+
+/* BLOCKQUOTE */
+blockquote { font-family: 'Merriweather', serif; font-size: 20px; font-style: italic; font-weight: 300; color: var(--ink2); line-height: 1.6; padding: 24px 0; border-top: 3px solid var(--orange); border-bottom: 1px solid var(--border-mid); margin: 32px 0; }
+blockquote cite { display: block; font-family: 'Lato', sans-serif; font-style: normal; font-size: 11px; font-weight: 700; color: var(--ink4); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 12px; }
+
+/* FOOTER */
+.footer-section { background: #000; padding: 64px 64px; border-top: 4px solid var(--orange); }
+.footer-section h2 { font-family: 'Merriweather', serif; font-size: 34px; font-weight: 300; color: #fff; margin-bottom: 24px; }
+.footer-section p { color: rgba(255,255,255,0.58); font-size: 15.5px; }
+.footer-section h3 { font-family: 'Merriweather', serif; font-size: 18px; color: var(--orange); margin: 32px 0 10px; font-weight: 700; }
+.footer-bar { background: var(--brown); padding: 22px 64px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 11px; }
+.footer-bar-brand { font-weight: 700; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; }
+.footer-bar-right { color: rgba(255,255,255,0.4); }
+
+@media (max-width: 760px) {
+  .cover, .section, .footer-section, .footer-bar { padding-left: 24px; padding-right: 24px; }
+  .nav { padding: 0 24px; }
+  .cover h1 { font-size: 36px; }
+  .sh { grid-template-columns: 1fr; }
+  .sh-num { display: none; }
+  .journey-row { grid-template-columns: 40px 1fr; }
+  .journey-mechanism, .journey-tool { display: none; }
+  .ripple-grid { grid-template-columns: 1fr 1fr; }
+  .three-a { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-lockup">
+    <div class="cover-bar"></div>
+    <div>
+      <div class="cover-brand-name">My 12 Journeys</div>
+      <div class="cover-brand-sub">Certified Giant Coaching · Facilitator Resource</div>
+    </div>
+  </div>
+  <div class="cover-tag">The Giant Map · Research + Practice Integration</div>
+  <h1>How the 12 Journeys <em>Guide</em> Transformation</h1>
+  <p class="cover-sub">A complete mapping of how each Journey, the RIPPLE framework, the Three-A, and the Five Laws implement the empirical science of human transformation — showing the exact mechanism behind every session activity.</p>
+  <div class="cover-stats">
+    <div><div class="cover-stat-label">Journeys Mapped</div><div class="cover-stat-val">12</div></div>
+    <div><div class="cover-stat-label">Research Frameworks</div><div class="cover-stat-val">8</div></div>
+    <div><div class="cover-stat-label">Psychological Mechanisms</div><div class="cover-stat-val">30+</div></div>
+    <div><div class="cover-stat-label">For</div><div class="cover-stat-val" style="font-size:16px;">Giants · Guides · Facilitators</div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-brand">My 12 Journeys</span>
+  <div class="nav-inner">
+    <a class="nav-link" href="#s0">The Big Picture</a>
+    <a class="nav-link" href="#s1">Journey-by-Journey Map</a>
+    <a class="nav-link" href="#s2">How RIPPLE Works</a>
+    <a class="nav-link" href="#s3">The Three-A Explained</a>
+    <a class="nav-link" href="#s4">The Five Laws</a>
+    <a class="nav-link" href="#s5">For the Facilitator</a>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- SECTION 0: THE BIG PICTURE -->
+<div class="section" id="s0">
+  <div class="sh">
+    <div class="sh-num">★</div>
+    <div>
+      <span class="sh-tag" style="background:var(--orange-light);color:#c45500;">The Giant Framework</span>
+      <h2 class="sh-title">The Big Picture: What the 12 Journeys Is Actually Doing</h2>
+      <p class="sh-sub">Before looking at individual Journeys, it helps to understand the complete architecture — what the sequence was designed to accomplish, psychologically and neurologically</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">The Central Mechanism — Every Journey, Every Session, Every Tool</div>
+    <p class="insight-text">The 12 Journeys creates a structured, sequenced series of conditions under which a person's own awareness turns toward the truth about who they are and who they are capable of becoming. The facilitator does not install the transformation. The Journey creates the container. The participant does the work.</p>
+  </div>
+
+  <p>The research on behavior change is unambiguous on one point: you cannot force transformation on another person. Direct confrontation triggers the left-hemisphere interpreter — the brain's narrative defense system — which generates rationalization, denial, and entrenchment. Every element of the 12 Journeys is engineered to work <em>with</em> this neurological reality, not against it.</p>
+
+  <p>The 12 Journeys does this through four interlocking systems: the Journey sequence itself (which mirrors the clinical Stages of Change), the RIPPLE teaching framework (which implements stage-matched interventions in every session), the Three-A tool (which gives participants the daily mechanism to continue the work between sessions), and the Five Laws (which provide the mythological language that makes the science felt, not just understood).</p>
+
+  <h3>The Journey Sequence Maps Directly to the Stages of Change</h3>
+
+  <table class="stage-table">
+    <tr>
+      <th>Program Phase</th>
+      <th>Journeys</th>
+      <th>Stage of Change (TTM)</th>
+      <th>Primary Psychological Work</th>
+    </tr>
+    <tr>
+      <td><strong>Root</strong><br><em style="font-size:12px;color:var(--orange);">Excavation</em></td>
+      <td>1–4<br><small>Layla, Lemeki, Soraya, Noa</small></td>
+      <td>Precontemplation → Contemplation → Preparation</td>
+      <td>Consciousness Raising. Surfacing the Hidden Payoff. Developing Discrepancy. Naming the Pattern. Emotional processing of the old identity. Moving from "I don't see a problem" to "I see the gap and I am ready to cross it."</td>
+    </tr>
+    <tr>
+      <td><strong>Transition</strong><br><em style="font-size:12px;color:#c4740a;">Empowerment</em></td>
+      <td>5–6<br><small>Zawadi, Rayo</small></td>
+      <td>Preparation → Action</td>
+      <td>Reorienting perception (Gratitude). Building the new identity declaration (Empowerment Statement). Installing Identity-Based Habits. Transitioning from awareness of the gap to active investment in the new self.</td>
+    </tr>
+    <tr>
+      <td><strong>Shoot</strong><br><em style="font-size:12px;color:#1a7fa8;">Expansion</em></td>
+      <td>7–11<br><small>Tawa, Abri, Drish, Liv, Nayeli</small></td>
+      <td>Action → Early Maintenance</td>
+      <td>Tolerating the unfamiliarity of freedom (Uncertainty). Expanding the self-concept (Abundance, Vision). Releasing control patterns (Surrender). Building the daily architecture that prevents shrinkage (Nurture).</td>
+    </tr>
+    <tr>
+      <td><strong>Fruit</strong><br><em style="font-size:12px;color:#0a7a38;">Legacy</em></td>
+      <td>12<br><small>Zakiya</small></td>
+      <td>Maintenance → Integration</td>
+      <td>Post-Traumatic Growth integration. Identity becomes generative — the Giant's growth begins to serve others. The echo becomes the legacy. The transformation consolidates into sustained character.</td>
+    </tr>
+  </table>
+
+  <div class="callout orange">
+    <p><strong>Why the sequence cannot be changed:</strong> The TTM research shows that applying the wrong intervention to the wrong stage consistently produces failure and increased resistance. Journey 1 uses Consciousness Raising because that is the only clinically effective intervention at the precontemplation stage. If you skip to Empowerment (Journey 6) before the Root work is done, you build identity on top of unexamined programming — and that identity collapses under pressure. The sequence is not arbitrary. It is stage-matched by design.</p>
+  </div>
+</div>
+
+<!-- SECTION 1: JOURNEY BY JOURNEY -->
+<div class="section" id="s1">
+  <div class="sh">
+    <div class="sh-num">1</div>
+    <div>
+      <span class="sh-tag" style="background:var(--orange-light);color:#c45500;">The Journey Map</span>
+      <h2 class="sh-title">What Each Journey Is Doing — Psychologically</h2>
+      <p class="sh-sub">Every Journey is a stage-matched intervention. Here is the exact psychological mechanism each one implements and the specific tools it delivers</p>
+    </div>
+  </div>
+
+  <p>Each column below shows: the Journey's character and theme, the primary psychological mechanism it activates, and the specific tool or practice the participant leaves with.</p>
+
+  <!-- ROOT PHASE -->
+  <div class="phase-label phase-root">
+    <span class="phase-label-text">Root Phase · Journeys 1–4 · Excavation</span>
+    <span class="phase-label-desc">Precontemplation → Preparation · Surfacing what was buried · Making the invisible visible</span>
+  </div>
+
+  <div class="journey-grid">
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--orange);">1</div>
+      <div class="journey-id">
+        <div class="journey-char">Layla · Non-Consciousness</div>
+        <div class="journey-theme">Unmasking the inherited voice</div>
+        <div class="journey-quote">"Some voices were never yours."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Consciousness Raising</strong> — the only intervention with consistent evidence at the precontemplation stage. Layla surfaces the socially-conditioned "Small Self" — the voice built by parents, culture, fear, and media. This is Bourdieu's Habitus made visible. The left-hemisphere interpreter cannot defend against a truth the participant arrives at through their own reflection ("Whose voice is that?"). The Echo Audit is an induced cognitive dissonance exercise: the participant's stated values are contrasted with inherited beliefs they've been operating on without examination.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>The Layla Question:</strong> "Whose voice is that?" — a self-distancing metacognitive prompt that moves automatic thought patterns from unconscious operation to conscious examination. Third-Person Journaling begins the identity separation process. Echo Audit becomes a permanent between-session practice.</p>
+      </div>
+    </div>
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--orange);">2</div>
+      <div class="journey-id">
+        <div class="journey-char">Lemeki · Awareness</div>
+        <div class="journey-theme">Seeing the pattern without becoming it</div>
+        <div class="journey-quote">"Awareness begins when you stop needing the thoughts to stop."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Metacognitive clarity + Developing Discrepancy.</strong> Lemeki teaches the gap between stimulus and response — the "space between" where choice lives. This is the Motivational Interviewing evocation stage: once the participant can observe their pattern without being consumed by it, the discrepancy between who they say they are and how they are actually living becomes undeniable. Polyvagal-informed awareness practices (body scan, trigger mapping) begin establishing the physiological substrate for self-regulation.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Trigger Map</strong> and <strong>Awareness prompt</strong> from the Three-A: "I'm noticing a part of me that [pattern], which developed to [protect/survive]." This is the clinical transition from precontemplation to contemplation — the participant now sees the pattern rather than living invisibly inside it.</p>
+      </div>
+    </div>
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:#d4522a;">3</div>
+      <div class="journey-id">
+        <div class="journey-char">Soraya · Grief</div>
+        <div class="journey-theme">Feeling fully to move forward</div>
+        <div class="journey-quote">"Don't rush this pain. It's remaking you."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Hidden Payoff surfacing + Emotional processing.</strong> Every maladaptive pattern persists because it is a solution to something deeper. Soraya surfaces that hidden payoff — the protection, belonging, or control the old identity was providing. This is the most clinically significant session because the brain's defensive architecture is at maximum engagement: the participant is being asked to grieve the pattern that kept them safe. Van der Kolk: "the body keeps the score." Bottom-up somatic processing (The Vessel Exercise, heart breathing) is required to move stored emotional material that cognitive reframing alone cannot reach.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Unsent Letter</strong> and <strong>Emotional Labeling</strong>: naming the precise shade of grief with specificity collapses the brain's ability to rationalize it. Acceptance prompt introduced: "I accept that this pattern helped me survive. It's not wrong. It's just complete."</p>
+      </div>
+    </div>
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:#d4522a;">4</div>
+      <div class="journey-id">
+        <div class="journey-char">Noa · Acceptance</div>
+        <div class="journey-theme">Releasing resistance without resigning</div>
+        <div class="journey-quote">"Peace isn't when things stop changing. It's when you stop resisting."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Radical Acceptance + Memory Reconsolidation prerequisite.</strong> Noa completes the cognitive dissonance arc: the old pattern has been seen (Journey 1–2), its hidden payoff acknowledged (Journey 3), and now it is released without shame. This is not passive resignation — it is the active recognition that the pattern is "complete." Psychologically, this initiates the Memory Reconsolidation window: the participant feels safe while sitting with what was previously experienced as a threat, creating the prediction error that allows permanent schema rewriting in PRACTICE.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>The Bear Exercise</strong> (coexisting with the unfixable) and <strong>Resistance Inventory</strong>. The Acceptance prompt is refined to: "It's not wrong. It's just complete. I don't need it to thrive." SDT Relatedness is deeply active here — the safety of the group container is what makes acceptance possible.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRANSITION PHASE -->
+  <div class="phase-label phase-transition" style="margin-top:24px;">
+    <span class="phase-label-text">Transition Phase · Journeys 5–6 · Empowerment</span>
+    <span class="phase-label-desc">Preparation → Action · Reorienting perception · Installing the new identity</span>
+  </div>
+
+  <div class="journey-grid">
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--peach);">5</div>
+      <div class="journey-id">
+        <div class="journey-char">Zawadi · Gratitude</div>
+        <div class="journey-theme">Rewiring the lens of perception</div>
+        <div class="journey-quote">"You're already rich. You just haven't counted in the right direction."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Status Quo Bias reorientation + Reticular Activation.</strong> The behavioral economics insight: the brain systematically underweights what is already present and overweights potential losses. Zawadi is a structured intervention to reverse this asymmetry. The Reticular Activating System (RAS) is literally a filter — it shows you what it has been primed to find. Gratitude recount does not create positivity; it recalibrates the RAS filter to find evidence of abundance that was always there. This is Law 3 in neurological language.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Scarcity-to-Abundance Reframe</strong> and <strong>Gratitude Recount</strong>. The "broken things know how to sing" framing is a Post-Traumatic Growth reframe: the loss was real AND it produced something of value. Both truths can be held simultaneously.</p>
+      </div>
+    </div>
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--peach);">6</div>
+      <div class="journey-id">
+        <div class="journey-char">Rayo · Empowerment</div>
+        <div class="journey-theme">Betting on yourself</div>
+        <div class="journey-quote">"Courage isn't feeling ready. It's betting on yourself anyway."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Identity-Based Habit Installation + Self-Determination Theory (Autonomy).</strong> Journey 6 is where the transformation architecture shifts from excavation to construction. The Empowerment Statement is the participant's identity declaration — "I am [new identity] because [evidence]" — which activates the Self-Consistency Bias in favor of the new self. By attaching the identity to personal evidence (not aspiration), it bypasses the interpreter's skepticism. The "because" structure activates the logical centers. The physical power posture creates somatic congruence. This is Law 5 — doing, not knowing.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>The Empowerment Statement</strong> — carried and spoken daily for the remainder of the program. <strong>Fear Inventory + Courage Bet</strong>: one micro-action taken despite fear provides the first piece of behavioral evidence for the new identity. SDT Autonomy is activated: the participant chose the statement, chose the evidence, chose the action.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SHOOT PHASE -->
+  <div class="phase-label phase-shoot" style="margin-top:24px;">
+    <span class="phase-label-text">Shoot Phase · Journeys 7–11 · Expansion</span>
+    <span class="phase-label-desc">Action → Maintenance · Living as the Giant Self · Building the architecture that prevents shrinkage</span>
+  </div>
+
+  <div class="journey-grid">
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--blue);">7</div>
+      <div class="journey-id">
+        <div class="journey-char">Tawa · Uncertainty</div>
+        <div class="journey-theme">The unfamiliarity of freedom</div>
+        <div class="journey-quote">"Certainty is the cage. Curiosity is the key."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Status Quo Bias + Identity Expansion into the unknown.</strong> Journey 7 addresses one of the deepest change resistances: the familiar current situation feels safer than an unknown better one, even when the current situation is objectively painful. Tawa names this explicitly — the "unfamiliarity of freedom." Antifragility Audit and Worst/Best/Most-Likely exercises make the unknown legible. The brain's loss aversion cannot be overridden; it can be redirected once the participant recognizes that the status quo has its own costs.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Comfort Zone Map</strong> and <strong>Antifragility Audit</strong>: evidence from the participant's own history that they have survived and been strengthened by chaos. The Tawa Game builds tolerance for ambiguity — a trainable capacity, not a fixed trait.</p>
+      </div>
+    </div>
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--blue);">8</div>
+      <div class="journey-id">
+        <div class="journey-char">Abri · Abundance</div>
+        <div class="journey-theme">The never-empty pouch</div>
+        <div class="journey-quote">"Everything you need is already here. The gift is learning how to shape it."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Self-Expansion Theory + Cognitive Dissonance (scarcity beliefs).</strong> Abri's Journey applies the Layla Question to scarcity beliefs ("There's not enough time/money/love") — most of which, traced to their origin, turn out to be inherited from environments of actual scarcity that no longer exist. The Resource Inventory creates a concrete dissonance between the felt sense of lack and the documented reality of what the participant already possesses. Generosity practice rewires scarcity at the neurological level: the act of giving contradicts the belief that there is not enough.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Scarcity Audit + Resource Inventory</strong>. The "never-empty pouch" is not magical thinking — it is trained attention to what is already present, which the RAS (retrained in Journey 5) is now equipped to find. Win-Win Redesign extends identity expansion to relational contexts.</p>
+      </div>
+    </div>
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--blue);">9</div>
+      <div class="journey-id">
+        <div class="journey-char">Drish · Vision</div>
+        <div class="journey-theme">Drawing the invisible into being</div>
+        <div class="journey-quote">"Everything begins as invisible. Until someone draws it."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Future-Self Simulation + SDT Competence building.</strong> Drish activates hope theory (Snyder) — not as optimism, but as a specific cognitive architecture: a clear goal, multiple pathways to reach it, and agency belief. The Future-Self Letter is a behavioral economics intervention: it makes the cost of the current trajectory as vivid as the aspired future, activating self-continuity motivation. Mental rehearsal creates the same neural activation as physical rehearsal — the brain cannot distinguish between vividly imagined and actually experienced identity-congruent behavior.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Future-Self Letter</strong> (from the arrived-at Giant, back to the present self) and <strong>Hope Theory Application</strong> (goal + pathways + agency). These create what the research calls "possible identity certainty" — the clarity about who you are becoming that makes the Green Light difficulty interpretation automatic.</p>
+      </div>
+    </div>
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--blue);">10</div>
+      <div class="journey-id">
+        <div class="journey-char">Liv · Surrender</div>
+        <div class="journey-theme">Releasing what was never yours to hold</div>
+        <div class="journey-quote">"You're not here to hold it all together. You're here to release what was never yours."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Pivotal Mental State + Controlled Confrontation.</strong> Liv is the deepest emotional session in the Shoot phase. Control is a fear response — the endowment effect applied to outcomes. The Liv Breath is a Polyvagal intervention: extended exhale activates the parasympathetic nervous system, creating physiological surrender. The Trust Fall Conversation ("What if it's safe to release that?") replicates the controlled confrontation that, in a safe relational container, can produce quantum change — sudden lasting reorganization of identity. This is why the Emotional Safety Protocol is active here.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Control Inventory</strong> (what is genuinely within influence vs. not) and the <strong>Liv Breath</strong> (4-in, 8-out parasympathetic activation). Flow State Reflection produces behavioral evidence that releasing control produces better outcomes — making surrender feel safe, not reckless.</p>
+      </div>
+    </div>
+
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--blue);">11</div>
+      <div class="journey-id">
+        <div class="journey-char">Nayeli · Nurture</div>
+        <div class="journey-theme">Tending to what you want to grow</div>
+        <div class="journey-quote">"What you tend to grows. That includes you."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Habit Architecture + Anti-Shrinkage Protocol (Law 4).</strong> Nayeli addresses Law 4 directly: fear makes you shrink, and unrefined neural pathways are actively pruned by the brain. The Daily Practice Flow is not motivational content — it is neuroplasticity engineering. Morning Identity Activation primes the nervous system. Midday Pattern Interruption deploys the Three-A in real time. Evening Embodiment Review leverages sleep consolidation to strengthen new pathways overnight. Without Nayeli, the transformation gained in earlier sessions decays through synaptic pruning.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Atomic Habit Design</strong> using the habit stack formula and <strong>Self-Care Audit</strong>. Kintsugi Reflection integrates Post-Traumatic Growth framing: the breaks in the participant's history are not evidence of failure but of resilience — they have made the person more valuable, not less.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FRUIT PHASE -->
+  <div class="phase-label phase-fruit" style="margin-top:24px;">
+    <span class="phase-label-text">Fruit Phase · Journey 12 · Legacy</span>
+    <span class="phase-label-desc">Maintenance → Integration · The Giant's growth becomes generative · The transformation serves others</span>
+  </div>
+
+  <div class="journey-grid">
+    <div class="journey-row">
+      <div class="journey-num" style="background:var(--green);">12</div>
+      <div class="journey-id">
+        <div class="journey-char">Zakiya · Legacy</div>
+        <div class="journey-theme">Living in echoes</div>
+        <div class="journey-quote">"Your name will live in echoes. So speak truth while you can."</div>
+      </div>
+      <div class="journey-mechanism">
+        <h5>Psychological Mechanism</h5>
+        <p><strong>Post-Traumatic Growth integration + SDT Relatedness at full expression.</strong> Journey 12 completes the transformation by making it generative. Erikson's generativity — the adult developmental need to create something that outlasts the self — is the mechanism. The Eulogy Exercise and Legacy Letter create the highest-stakes possible identity confrontation: "Am I living in alignment with what I would want said about me?" This is cognitive dissonance at its most potent. The participant who has walked all 12 Journeys now holds both their own transformation and the responsibility to pass it forward.</p>
+      </div>
+      <div class="journey-tool">
+        <h5>Tool Delivered</h5>
+        <p><strong>Legacy Letter</strong>, <strong>Values Clarification</strong>, and <strong>Generativity Project</strong>: a specific plan to mentor, teach, or give back. Zakiya's story "writes itself as others speak" — the Giant's transformation becomes the next person's proximal model. The ripple continues.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: HOW RIPPLE WORKS -->
+<div class="section" id="s2">
+  <div class="sh">
+    <div class="sh-num">2</div>
+    <div>
+      <span class="sh-tag" style="background:var(--blue-light);color:#1a7fa8;">The RIPPLE Framework</span>
+      <h2 class="sh-title">How RIPPLE Implements the Transformation Science</h2>
+      <p class="sh-sub">Each stage of RIPPLE is not a teaching convenience — it is a specific psychological intervention implemented in the correct sequence</p>
+    </div>
+  </div>
+
+  <p>The RIPPLE sequence was not assembled from general best practices. Each stage corresponds to a specific finding in the behavioral science research, and the stages must occur in order because each one creates the neurological precondition for the next. Skipping REGULATE means IMMERSE cannot penetrate. Skipping IMMERSE means PRESENT is just information transfer. Skipping PRACTICE means LAND is aspiration without evidence.</p>
+
+  <div class="ripple-grid">
+
+    <div class="ripple-card r">
+      <div class="ripple-letter">R</div>
+      <div class="ripple-name">Regulate</div>
+      <div class="ripple-what">Calm the nervous system</div>
+      <p>Polyvagal Theory: ventral vagal safety is the biological prerequisite for neuroplastic learning. Sympathetic hyperarousal suppresses the prefrontal cortex — the region required for honest self-examination. Without REGULATE, every subsequent stage is processed by a threat-activated brain.</p>
+      <span class="ripple-tag" style="background:var(--blue-light);color:#1a7fa8;">SDT: Relatedness prerequisite</span>
+    </div>
+
+    <div class="ripple-card i">
+      <div class="ripple-letter">I</div>
+      <div class="ripple-name">Immerse</div>
+      <div class="ripple-what">Enter the story</div>
+      <p>Stories are 22x more memorable than facts. Mirror neurons fire as if the listener were living the character's experience. Ritt is a proximal model — a Small who was where the participant is now. The "disorienting dilemma" (Mezirow) creates cognitive hunger that makes PRESENT feel necessary, not imposed.</p>
+      <span class="ripple-tag" style="background:var(--orange-light);color:#c45500;">Social Modeling + Mirror Neurons</span>
+    </div>
+
+    <div class="ripple-card p1">
+      <div class="ripple-letter">P₁</div>
+      <div class="ripple-name">Present</div>
+      <div class="ripple-what">Teach the mechanics</div>
+      <p>Cognitive Load Theory: 10–15 min chunks with Pause Procedures prevent working memory overload. The Protégé Effect (announcing teach-back at the START of PRESENT) changes how the brain processes — from passive reception to active preparation. The Three-A is taught as a real-time operational tool, not an abstraction.</p>
+      <span class="ripple-tag" style="background:var(--peach-light);color:#c4740a;">Consciousness Raising + Discrepancy</span>
+    </div>
+
+    <div class="ripple-card p2">
+      <div class="ripple-letter">P₂</div>
+      <div class="ripple-name">Practice</div>
+      <div class="ripple-what">Do it in the body</div>
+      <p>Memory Reconsolidation: activating an old schema while providing a contradictory experience (feeling safe while confronting old programming) opens a synaptic window for permanent rewriting. Teach-back produces deeper processing than studying. This is where the transformation moves from the head to the body — Law 5 in action.</p>
+      <span class="ripple-tag" style="background:var(--green-light);color:#0a7a38;">Identity Vote + Self-Perception Theory</span>
+    </div>
+
+    <div class="ripple-card l">
+      <div class="ripple-letter">L</div>
+      <div class="ripple-name">Land</div>
+      <div class="ripple-what">Anchor internally</div>
+      <p>Mezirow: meaning-making must precede action-planning for deep change. The signature quote delivered with weight and silence creates emotional encoding — emotionally significant experiences are stored more durably. I AM statements force the brain to process new identity as current reality, not future aspiration. Feeling must come before planning.</p>
+      <span class="ripple-tag" style="background:var(--brown-light);color:var(--brown);">Cognitive Dissonance resolution</span>
+    </div>
+
+    <div class="ripple-card e">
+      <div class="ripple-letter">E</div>
+      <div class="ripple-name">Extend</div>
+      <div class="ripple-what">Carry it into the world</div>
+      <p>Without reinforcement, only ~10% of session content transfers to real behavior. Pre-Mortem (imagining failure) outperforms positive planning for follow-through. Environmental design beats willpower. The Daily Practice Flow structures neuroplastic windows — morning priming, midday interruption, evening consolidation — to counteract Law 4.</p>
+      <span class="ripple-tag" style="background:var(--blue-light);color:#1a7fa8;">Behavioral Economics + Anti-Shrinkage</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 3: THE THREE-A -->
+<div class="section" id="s3">
+  <div class="sh">
+    <div class="sh-num">3</div>
+    <div>
+      <span class="sh-tag" style="background:var(--green-light);color:#0a7a38;">The Three-A Framework</span>
+      <h2 class="sh-title">How the Three-A Gives Participants the Daily Mechanism</h2>
+      <p class="sh-sub">The Three-A is not a journaling exercise. It is a real-time neurological intervention that can be deployed in seconds — the portable version of everything the 12 Journeys teaches</p>
+    </div>
+  </div>
+
+  <p>The Three-A is the bridge between what happens in a session and what happens in a life. It distills the entire transformation science into three steps that can be used in the moment a pattern is triggered — in a meeting, in an argument, alone at 2am. Each step has a specific psychological function and a somatic anchor that makes it physiological, not just cognitive.</p>
+
+  <div class="three-a">
+
+    <div class="aa-card">
+      <div class="aa-step">Step 1 · Awareness</div>
+      <div class="aa-title">Wake Up Without Vilifying</div>
+      <div class="aa-prompt">"I'm noticing a part of me that [pattern], which developed to [protect/survive]. That's not who I am — it's something I learned."</div>
+      <p><strong>What this does:</strong> Self-distancing (third-person framing) activates metacognitive clarity. The pattern moves from unconscious operation to conscious observation. Naming it without shame is the anti-interpreter move — the brain cannot defend against a truth it discovers itself. Somatic anchor: hand on chest, slow exhale.</p>
+    </div>
+
+    <div class="aa-card">
+      <div class="aa-step">Step 2 · Acceptance</div>
+      <div class="aa-title">Honor Without Resigning</div>
+      <div class="aa-prompt">"I accept that this pattern helped me survive. It's not wrong. It's just complete. I don't need it to thrive."</div>
+      <p><strong>What this does:</strong> Acknowledges the hidden payoff without resigning to it. This is the Memory Reconsolidation prerequisite: feeling safe while observing what was previously a threat opens the synaptic window for schema rewriting. Radical Acceptance ends resistance without abandoning growth. Somatic anchor: open palms — the physical antonym of the clenched fist of control.</p>
+    </div>
+
+    <div class="aa-card">
+      <div class="aa-step">Step 3 · Authority</div>
+      <div class="aa-title">Rewire in Real Time</div>
+      <div class="aa-prompt">"I am [new identity] because [evidence]. I prove it when I [micro-action], and it feels like [metaphor]. I'll walk this again tomorrow — and smile when I do."</div>
+      <p><strong>What this does:</strong> Identity-Based Habit installation. "Because" activates logical centers. The micro-action is the identity vote — Self-Perception Theory in operation. The smile is not optional: micro-celebration releases dopamine, chemically encoding the new pattern. Somatic anchor: micro-action + smile = behavioral evidence cast in the body, not just the mind.</p>
+    </div>
+
+  </div>
+
+  <div class="callout green">
+    <p><strong>The Three-A across a session:</strong> PRESENT teaches it explicitly. PRACTICE uses it on a real pattern from the participant's life. LAND's "Who am I becoming — and what proof did I give today?" is an Awareness prompt. The character quote is an Authority anchor. EXTEND assigns it as daily practice within the Daily Practice Flow. By Journey 6, participants should be running the Three-A automatically when triggered — without referring to the card.</p>
+  </div>
+</div>
+
+<!-- SECTION 4: THE FIVE LAWS -->
+<div class="section" id="s4">
+  <div class="sh">
+    <div class="sh-num">4</div>
+    <div>
+      <span class="sh-tag" style="background:var(--brown-light);color:var(--brown);">The Five Laws</span>
+      <h2 class="sh-title">What the Five Laws Are Actually Saying — Scientifically</h2>
+      <p class="sh-sub">The Five Laws are not inspirational sayings. They are the behavioral science of transformation translated into mythological language that the body can feel, not just the mind can understand</p>
+    </div>
+  </div>
+
+  <blockquote>
+    "The Five Laws don't become real when you learn them. They become real when you feel them — in the shattered bed, on the Giant's shoulder, in the middle of the dark forest when you keep walking anyway."
+    <cite>— RIPPLE Facilitator's Manual, From Small to Giant</cite>
+  </blockquote>
+
+  <div class="law-grid">
+
+    <div class="law-card">
+      <div class="law-num">1</div>
+      <div class="law-body">
+        <div class="law-name">Every Giant Was Born a Small</div>
+        <p>"My friend, I need you to know that I was born a Small just like you." — Rimi</p>
+      </div>
+      <div class="law-science">
+        <h5>The Science Behind It</h5>
+        <p><strong>Neuroplasticity + TTM Precontemplation bypass.</strong> The adult hippocampus generates ~700 new neurons daily. Identity is not fixed — it is built, rebuilt, and built again. This Law is what makes Consciousness Raising possible: if the participant believes Smalls are permanently Small, no intervention can land. Law 1 dismantles the "it's just how I am" rationalization before the Journeys begin. Every Giant is a proximal model: Rimi was where Ritt is now. This is the foundational social modeling intervention.</p>
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-num">2</div>
+      <div class="law-body">
+        <div class="law-name">You Will Outgrow Your House Before You're Ready</div>
+        <p>Ritt's bed shattered. His arm broke through the window. The old container couldn't hold him.</p>
+      </div>
+      <div class="law-science">
+        <h5>The Science Behind It</h5>
+        <p><strong>Identity Threat vs. Identity Expansion + Status Quo disruption.</strong> The deepest resistance to change is the perception that transformation requires the death of the existing self. Law 2 normalizes identity disruption: the discomfort of old relationships straining, old habits feeling wrong, old identities feeling like costumes — this is not failure. It is the felt experience of growth. Reframing the "broken house" as evidence of expansion (not loss) is the Self-Expansion Theory intervention that keeps participants from shrinking back to fit.</p>
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-num">3</div>
+      <div class="law-body">
+        <div class="law-name">Giants See What Smalls Miss</div>
+        <p>Rimi put Ritt on his shoulder. An ocean appeared. The view had always been there.</p>
+      </div>
+      <div class="law-science">
+        <h5>The Science Behind It</h5>
+        <p><strong>Reticular Activating System + Consciousness Raising + Social Modeling.</strong> Awareness is not acquiring new information — it is calibrating the RAS filter to notice what was always present. Every character in the 12 Journeys is a shoulder to stand on: their story recalibrates what the participant's brain is primed to see. This is also the mechanism of the Journeys themselves: each one literally elevates the participant's view of their own life. The ocean of gratitude, abundance, vision, and legacy was always there. The Journeys don't create it. They elevate the viewer.</p>
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-num">4</div>
+      <div class="law-body">
+        <div class="law-name">Fear Makes You Shrink</div>
+        <p>Fearful thoughts don't just stop growth. They actively make you smaller. Every day is a choice.</p>
+      </div>
+      <div class="law-science">
+        <h5>The Science Behind It</h5>
+        <p><strong>Synaptic Pruning + Loss Aversion + Anti-Maintenance architecture.</strong> Neural pathways that are not reinforced are actively pruned. The Small Self is not a historical artifact — it is an active gravitational force, pulling toward familiar patterns daily. This is why the Daily Practice Flow is not optional: Morning Identity Activation, Midday Pattern Interruption, and Evening Embodiment Review are the neuroplastic windows that keep new pathways insulated. Law 4 is the biological explanation for why every giant achievement fades without consistent maintenance.</p>
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-num">5</div>
+      <div class="law-body">
+        <div class="law-name">Giants Grow by Doing, Not by Knowing</div>
+        <p>Ritt grew when he ran, pulled weeds, and walked through the dark. Not when he listened.</p>
+      </div>
+      <div class="law-science">
+        <h5>The Science Behind It</h5>
+        <p><strong>Self-Perception Theory + Behavioral Activation + Protégé Effect.</strong> Bem's Self-Perception Theory: we infer our identity by watching our own behavior. The brain updates the self-model based on actions, not intentions. Passive instruction transfers only ~10% of the time. Embodied experience — PRACTICE, teach-back, somatic anchoring, Three-A deployment — pushes that number dramatically higher. Every micro-action taken as the Giant Self is a vote for that identity. Law 5 is why every PRACTICE activity exists, why the Daily Practice Flow requires physical movement, and why the Empowerment Statement must be spoken aloud in a power posture.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 5: FOR THE FACILITATOR -->
+<div class="section" id="s5">
+  <div class="sh">
+    <div class="sh-num">5</div>
+    <div>
+      <span class="sh-tag" style="background:var(--orange-light);color:#c45500;">For the Giant Guide</span>
+      <h2 class="sh-title">What This Means for How You Facilitate</h2>
+      <p class="sh-sub">Understanding the mechanism behind each Journey, stage, and tool changes how you show up in the room — and what you do when things go sideways</p>
+    </div>
+  </div>
+
+  <h3>The Single Most Important Thing to Remember</h3>
+  <p>Your role is not to transform your participants. Your role is to create the precise conditions under which their own intelligence, awareness, and courage turn toward the truth. The transformation belongs entirely to them. The moment you take ownership of it — through pressure, persuasion, or urgency — you trigger the left-hemisphere interpreter and undo the work.</p>
+
+  <div class="callout orange">
+    <p><strong>The Righting Reflex and why you must suppress it:</strong> Every trained helper has the deeply ingrained impulse to fix, correct, and redirect when they see someone struggling. In the 12 Journeys room, this impulse is the enemy of transformation. The moment a participant senses you have a destination in mind for them, they stop exploring honestly and start managing your perception. The Righting Reflex is the single most common cause of facilitation failure. The antidote is genuine curiosity — asking questions you actually want the answer to, with zero agenda for where the answer leads.</p>
+  </div>
+
+  <h3>What Each Stage Requires of You</h3>
+
+  <table class="stage-table">
+    <tr><th>RIPPLE Stage</th><th>What the participant needs</th><th>What you must do</th><th>What you must NOT do</th></tr>
+    <tr>
+      <td><strong>R — Regulate</strong></td>
+      <td>Physiological safety. Ventral vagal activation. The body must arrive before the mind can work.</td>
+      <td>Lead with genuine presence. Don't rush. Let silence be productive. The grounding works when you're grounded.</td>
+      <td>Skip this or shrink it. A shortened REGULATE means IMMERSE cannot penetrate a threat-activated brain.</td>
+    </tr>
+    <tr>
+      <td><strong>I — Immerse</strong></td>
+      <td>To be transported into Ritt's story. The story must land in the body, not be processed by the head.</td>
+      <td>Deliver the story with presence, pace, and emotional authenticity. Use silence after. Ask one open question: "What landed?" Do NOT explain the story.</td>
+      <td>Interpret, summarize, or analyze the story after reading it. The story's power lives in the participant's nervous system, not in your commentary.</td>
+    </tr>
+    <tr>
+      <td><strong>P — Present</strong></td>
+      <td>To understand the science in manageable chunks. To feel taught, not lectured at.</td>
+      <td>Announce teach-back at the start. Never lecture more than 15 minutes without a Pause Procedure. Teach the Three-A explicitly.</td>
+      <td>Cram. Explaining everything eliminates the retrieval practice that cements learning. If the teach-back reveals confusion, own it: "I didn't explain that clearly enough."</td>
+    </tr>
+    <tr>
+      <td><strong>P — Practice</strong></td>
+      <td>To discover through doing what they couldn't access through listening.</td>
+      <td>Select activities matched to where the group is emotionally. Use the 5Ts. Let pairs surprise themselves.</td>
+      <td>Rescue participants from discomfort too quickly. The productive struggle IS the practice. The interpreter needs to run into evidence it cannot dismiss.</td>
+    </tr>
+    <tr>
+      <td><strong>L — Land</strong></td>
+      <td>To feel — before being asked to plan. The meaning must integrate before the action is assigned.</td>
+      <td>Deliver the quote with weight and genuine silence after. Hold the pause. Let the I AM statement be written without rushing to share.</td>
+      <td>Blur LAND and EXTEND. Feeling and planning are different neurological processes. Planning too soon converts emotional insight into intellectual content and loses the body.</td>
+    </tr>
+    <tr>
+      <td><strong>E — Extend</strong></td>
+      <td>A specific, survivable bridge between today and the next session. Not inspiration — architecture.</td>
+      <td>Make commitments specific (when, where, what). Run the Pre-Mortem. Assign buddies. Close on the challenge, not on "wasn't that great?"</td>
+      <td>Let EXTEND be vague. "Practice this week" is not a commitment. Without specific conditions and an accountability structure, ~90% of session content will not transfer.</td>
+    </tr>
+  </table>
+
+  <h3>When Participants Resist or Don't Engage</h3>
+  <p>Resistance is information, not failure. A participant who resists is not difficult — they are in an earlier stage of change than the session assumed. The TTM research is unambiguous: forcing action-stage interventions on precontemplation-stage participants produces entrenchment, not progress. When you see resistance, diagnose the stage and respond to where the person actually is, not where the session plan assumed they'd be.</p>
+
+  <div class="callout blue">
+    <p><strong>The diagnostic question:</strong> Is this person resisting the activity (normal — try low-risk entry points like individual writing before pair-share) or resisting the entire premise of the Journey (they may be in precontemplation for this specific theme)? For the first case, structure is the solution. For the second case, the Layla Question is the solution: "Whose voice is saying this doesn't apply to you?" That question, asked with genuine curiosity and zero judgment, is the only intervention that works.</p>
+  </div>
+
+  <h3>The Ripple You Create</h3>
+  <p>Journey 12 ends with Zakiya — whose story "writes itself as others speak." Every participant who completes the 12 Journeys becomes a proximal model for someone else who is still Small. The ripple does not stop with them. Your facilitation either accelerates or interrupts that ripple. When you create the right conditions — safety, honest reflection, the space for self-generated insight — you are not just teaching. You are building the next generation of Giants who will teach others.</p>
+
+  <p>That is the work. And Rimi said it best: "Every Giant was born a Small." The person in front of you is already capable of the view from the shoulder. They just can't see it yet from the ground. Your job is to offer the shoulder — and trust that the ocean will appear.</p>
+</div>
+
+</div><!-- end main -->
+
+<!-- FOOTER -->
+<div class="footer-section">
+  <div style="max-width:1000px;margin:0 auto;padding:0 64px;">
+    <p style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:16px;">My 12 Journeys · The Giant Map</p>
+    <h2>The Journeys and the Science Are the Same Thing</h2>
+    <p>The 12 Journeys is not a curriculum that was designed and then had research attached to it afterward. It is an operational implementation of what the behavioral science reveals: transformation requires a specific sequence of conditions, not a single powerful technique. Layla's Echo Audit is Consciousness Raising. Soraya's grief is the Hidden Payoff being surfaced. Rayo's Empowerment Statement is the Identity Declaration. Tawa's Comfort Zone Map is the cost-of-inaction vivification. Nayeli's Daily Practice is the anti-synaptic-pruning protocol.</p>
+    <p>Every character, every quote, every activity maps to a mechanism. And every mechanism serves the same mission: creating the conditions under which a Small can see the ocean — and decide, freely, on their own terms, that they are ready to become a Giant.</p>
+    <h3>For questions about how to apply this in your facilitation</h3>
+    <p style="color:rgba(255,255,255,0.5);">Refer to the RIPPLE Facilitator's Manual (v3.1) for complete session scripts, activity instructions, and the Emotional Safety Protocol. Refer to the Transformation Framework document for the complete clinical research base. These three documents — this map, the facilitator's manual, and the research framework — form the complete Giant Guide training library.</p>
+  </div>
+</div>
+
+<div class="footer-bar">
+  <span class="footer-bar-brand">My 12 Journeys · Certified Giant Coaching</span>
+  <span class="footer-bar-right">© 2026 Mandelbrot Productions · All Rights Reserved · Confidential Giant Guide Resource</span>
+</div>
+
+</body>
+</html>

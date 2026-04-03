@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My 12 Journeys — The Research Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* My 12 Journeys Official Brand Colors */
+    --orange:       #fe7624;
+    --orange-light: #fff2e9;
+    --orange-mid:   #fe7624;
+    --blue:         #42abdb;
+    --blue-light:   #e8f6fc;
+    --blue-mid:     #42abdb;
+    --green:        #0B9444;
+    --green-light:  #e6f5ec;
+    --green-mid:    #0B9444;
+    --peach:        #F89A29;
+    --peach-light:  #fef5e8;
+    --peach-mid:    #F89A29;
+    --brown:        #3B2313;
+    --brown-light:  #f2ebe4;
+    --brown-mid:    #7a5a42;
+
+    /* Semantic */
+    --ink:          #111110;
+    --ink-2:        #3B2313;
+    --ink-3:        #6b6860;
+    --ink-4:        #9c9a92;
+    --paper:        #ffffff;
+    --paper-2:      #f8f7f4;
+    --paper-3:      #ede9e0;
+
+    /* Legacy aliases → brand */
+    --amber:        var(--orange);
+    --amber-light:  var(--orange-light);
+    --amber-mid:    var(--orange-mid);
+    --teal:         var(--green);
+    --teal-light:   var(--green-light);
+    --teal-mid:     var(--green-mid);
+    --purple:       var(--blue);
+    --purple-light: var(--blue-light);
+    --coral:        #c4740a;
+    --coral-light:  var(--peach-light);
+
+    --border:       rgba(59,35,19,0.1);
+    --border-strong:rgba(59,35,19,0.2);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* COVER */
+  .cover {
+    background: #000000;
+    color: var(--paper);
+    padding: 80px 60px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 60px,
+      rgba(254,118,36,0.04) 60px,
+      rgba(254,118,36,0.04) 61px
+    );
+    pointer-events: none;
+  }
+      -45deg,
+      transparent,
+      transparent 60px,
+      rgba(254,118,36,0.04) 60px,
+      rgba(254,118,36,0.04) 61px
+    );
+  }
+  .cover-brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 44px;
+    position: relative;
+  }
+  .cover-brand-bar {
+    width: 3px;
+    height: 40px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+  .cover-brand-name {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .cover-brand-sub {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .cover-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 32px;
+    font-weight: 700;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 50px;
+    line-height: 1.12;
+    color: #ffffff;
+    max-width: 680px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    position: relative;
+  }
+  .cover h1 em {
+    font-style: italic;
+    color: var(--orange);
+  }
+  .cover-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    max-width: 580px;
+    margin-bottom: 56px;
+    line-height: 1.65;
+    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(254,118,36,0.25);
+    padding-top: 28px;
+    position: relative;
+  }
+  .cover-meta-item .label {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item .value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+  }
+  .framework-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 40px;
+    position: relative;
+  }
+  .framework-pill {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(254,118,36,0.35);
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.04em;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--paper-2);
+    padding: 56px 60px;
+    border-bottom: 3px solid var(--orange);
+  }
+  .toc h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+    margin-bottom: 32px;
+    color: var(--ink-3);
+    font-weight: 400;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .toc-item:hover { background: white; border-color: var(--orange); }
+  .toc-num {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.08em;
+    min-width: 24px;
+    padding-top: 2px;
+  }
+  .toc-content {}
+  .toc-title { font-size: 14px; font-weight: 700; color: var(--ink); font-family: 'Lato', sans-serif; }
+  .toc-desc { font-size: 12px; color: var(--ink-3); line-height: 1.45; margin-top: 2px; }
+
+  /* MAIN CONTENT */
+  .main { max-width: 860px; margin: 0 auto; padding: 0 60px; }
+
+  /* SECTION */
+  .section {
+    padding: 72px 0 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+  .section-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 52px;
+  }
+  .section-num {
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .section-title-block {}
+  .section-tag {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+  .section-title {
+    font-family: 'Merriweather', serif;
+    font-size: 28px;
+    line-height: 1.18;
+    font-weight: 400;
+  }
+  .section-subtitle {
+    font-size: 15px;
+    color: var(--ink-3);
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 36px 0 12px;
+    color: var(--ink);
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: var(--ink-2);
+    font-size: 15.5px;
+    line-height: 1.78;
+  }
+
+  /* CALLOUT / HIGHLIGHT */
+  .callout {
+    border-left: 3px solid;
+    padding: 16px 20px;
+    margin: 24px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout-amber { border-color: var(--orange-mid); background: var(--orange-light); }
+  .callout-teal  { border-color: var(--green-mid);  background: var(--green-light); }
+  .callout-purple{ border-color: var(--blue-mid);   background: var(--blue-light); }
+  .callout-coral { border-color: var(--peach-mid);  background: var(--peach-light); }
+  .callout-blue  { border-color: var(--blue-mid);   background: var(--blue-light); }
+  .callout-green { border-color: var(--green-mid);  background: var(--green-light); }
+  .callout p { font-size: 14.5px; margin-bottom: 0; color: var(--ink-2); }
+  .callout strong { color: var(--ink); font-weight: 700; }
+
+  /* EVIDENCE CARD */
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .evidence-card {
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--orange);
+    border-radius: 8px;
+    background: white;
+  }
+  .evidence-card .stat {
+    font-family: 'Merriweather', serif;
+    font-size: 30px;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .evidence-card .stat-label {
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 1.4;
+    font-family: 'Lato', sans-serif;
+  }
+  .evidence-card .source {
+    font-size: 11px;
+    color: var(--ink-4);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* KEY MECHANISM */
+  .mechanism-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .mechanism-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 18px;
+    background: var(--paper-2);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .mechanism-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+  .mechanism-item p { margin-bottom: 0; font-size: 14.5px; }
+  .mechanism-item strong { font-weight: 600; color: var(--ink); }
+
+  /* QUOTE */
+  blockquote {
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    font-style: italic;
+    border-top: 3px solid var(--orange);
+    border-bottom: 1px solid var(--border-strong);
+    padding: 24px 0;
+    margin: 32px 0;
+  }
+  blockquote cite {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--ink-4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  /* PROCESS FLOW */
+  .process-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 28px 0;
+    flex-wrap: wrap;
+  }
+  .process-step {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 16px;
+    text-align: center;
+    background: var(--paper-2);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .process-step:first-child { border-radius: 8px 0 0 8px; border-left: 3px solid var(--orange); }
+  .process-step:last-child { border-radius: 0 8px 8px 0; background: var(--orange-light); border-color: var(--orange); }
+  .process-step .step-num {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+  .process-step .step-name {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .process-arrow {
+    font-size: 16px;
+    color: var(--orange);
+    padding: 0 2px;
+    flex-shrink: 0;
+  }
+
+  /* SYNTHESIS */
+  .synthesis {
+    background: #000000;
+    color: #ffffff;
+    padding: 72px 60px;
+    margin-top: 0;
+    border-top: 4px solid var(--orange);
+  }
+  .synthesis h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: #ffffff;
+    margin-bottom: 32px;
+  }
+  .synthesis p { color: rgba(255,255,255,0.6); margin-bottom: 20px; font-size: 15.5px; }
+  .synthesis h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+    color: var(--orange);
+    margin: 40px 0 14px;
+    font-weight: 700;
+  }
+
+  /* PROCESS MODEL */
+  .process-model {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(254,118,36,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 32px 0;
+  }
+  .pm-header {
+    background: rgba(254,118,36,0.1);
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(254,118,36,0.2);
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .pm-stage {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .pm-stage:last-child { border-bottom: none; }
+  .pm-num {
+    width: 48px;
+    background: rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Merriweather', serif;
+    font-size: 22px;
+    color: var(--orange);
+    border-right: 1px solid rgba(254,118,36,0.2);
+    flex-shrink: 0;
+  }
+  .pm-content { padding: 18px 24px; flex: 1; }
+  .pm-stage-title { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 14px; color: rgba(255,255,255,0.9); margin-bottom: 4px; }
+  .pm-stage-desc { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.55; margin: 0; }
+  .pm-tag {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  /* PM tags — all mapped to M12J brand colors */
+  .tag-ttm      { background: var(--orange-light); color: #c45500; }
+  .tag-mi       { background: var(--green-light);  color: #0a7a38; }
+  .tag-cd       { background: var(--blue-light);   color: #1a7fa8; }
+  .tag-identity { background: var(--peach-light);  color: #c4740a; }
+  .tag-sdt      { background: var(--blue-light);   color: #1a7fa8; }
+  .tag-be       { background: var(--green-light);  color: #0a7a38; }
+  .tag-social   { background: var(--orange-light); color: #c45500; }
+  .tag-quantum  { background: var(--brown-light);  color: var(--brown); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--brown);
+    border-top: 1px solid rgba(254,118,36,0.3);
+    padding: 28px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-left { font-family: 'Lato', sans-serif; font-size: 12px; color: rgba(255,255,255,0.4); }
+  .footer-right { font-family: 'Lato', sans-serif; font-size: 11px; color: var(--orange); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* COLOR TAGS FOR SECTIONS — M12J brand palette */
+  .s1 { background: var(--orange-light); color: #c45500; }  /* Giant Orange — TTM */
+  .s2 { background: var(--green-light);  color: #0a7a38; }  /* Growth Green — MI */
+  .s3 { background: var(--blue-light);   color: #1a7fa8; }  /* Giant Blue — Dissonance */
+  .s4 { background: var(--peach-light);  color: #c4740a; }  /* Legacy Peach — Identity */
+  .s5 { background: var(--blue-light);   color: #1a7fa8; }  /* Giant Blue — SDT */
+  .s6 { background: var(--green-light);  color: #0a7a38; }  /* Growth Green — Economics */
+  .s7 { background: var(--orange-light); color: #c45500; }  /* Giant Orange — Social */
+  .s8 { background: var(--brown-light);  color: var(--brown); } /* Root Brown — Quantum */
+
+  /* ANCHOR OFFSET */
+  [id] { scroll-margin-top: 24px; }
+
+  @media (max-width: 700px) {
+    .cover, .toc, .main, .synthesis, .footer { padding-left: 24px; padding-right: 24px; }
+    .cover h1 { font-size: 34px; }
+    .section { padding: 48px 0 40px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .evidence-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-brand-lockup">
+    <div class="cover-brand-bar"></div>
+    <div>
+      <div class="cover-brand-name">My 12 Journeys</div>
+      <div class="cover-brand-sub">Certified Giant Coaching · Research Foundation</div>
+    </div>
+  </div>
+  <p class="cover-label">The Giant Research Library · Eight Frameworks · One Mission</p>
+  <h1>The Science of <em>Transformation</em></h1>
+  <p class="cover-sub">The empirical foundation behind the My 12 Journeys method — eight converging frameworks that reveal exactly how and why human beings transform, from the first spark of awareness to lasting identity change.</p>
+  <div class="framework-pills">
+    <span class="framework-pill">Transtheoretical Model</span>
+    <span class="framework-pill">Motivational Interviewing</span>
+    <span class="framework-pill">Cognitive Dissonance</span>
+    <span class="framework-pill">Identity-Based Change</span>
+    <span class="framework-pill">Self-Determination Theory</span>
+    <span class="framework-pill">Behavioral Economics</span>
+    <span class="framework-pill">Social Modeling</span>
+    <span class="framework-pill">Quantum Change</span>
+  </div>
+  <div class="cover-meta" style="margin-top:36px;">
+    <div class="cover-meta-item">
+      <div class="label">Sources Reviewed</div>
+      <div class="value">40+ peer-reviewed studies</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Frameworks</div>
+      <div class="value">8 clinical / theoretical models</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Application</div>
+      <div class="value">Universal — all stages, backgrounds</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+    <a class="toc-item" href="#s1">
+      <span class="toc-num">01</span>
+      <div class="toc-content">
+        <div class="toc-title">Transtheoretical Model (TTM)</div>
+        <div class="toc-desc">Moving from precontemplation to contemplation without triggering defensiveness</div>
+      </div>
+    </a>
+    <a class="toc-item" href="#s2">
+      <span class="toc-num">02</span>
+      <div class="toc-content">
+        <div class="toc-title">Motivational Interviewing</div>
+        <div class="toc-desc">Developing discrepancy and evoking self-generated change talk</div>
+      </div>
+    </a>
+    <a class="toc-item" href="#s3">
+      <span class="toc-num">03</span>
+      <div class="toc-content">
+        <div class="toc-title">Cognitive Dissonance Theory</div>
+        <div class="toc-desc">Activating the gap between core values and current actions</div>
+      </div>
+    </a>
+    <a class="toc-item" href="#s4">
+      <span class="toc-num">04</span>
+      <div class="toc-content">
+        <div class="toc-title">Identity-Based Habit Change</div>
+        <div class="toc-desc">Reframing change as expansion rather than loss of self</div>
+      </div>
+    </a>
+    <a class="toc-item" href="#s5">
+      <span class="toc-num">05</span>
+      <div class="toc-content">
+        <div class="toc-title">Self-Determination Theory</div>
+        <div class="toc-desc">Fostering autonomy, competence, and relatedness to shift from negative to empowered</div>
+      </div>
+    </a>
+    <a class="toc-item" href="#s6">
+      <span class="toc-num">06</span>
+      <div class="toc-content">
+        <div class="toc-title">Status Quo Bias &amp; Loss Aversion</div>
+        <div class="toc-desc">Reframing inaction as loss; the hidden cost of staying the same</div>
+      </div>
+    </a>
+    <a class="toc-item" href="#s7">
+      <span class="toc-num">07</span>
+      <div class="toc-content">
+        <div class="toc-title">Social Modeling &amp; Mirror Neurons</div>
+        <div class="toc-desc">Proximal models, vicarious mastery, and the neuroscience of watching others change</div>
+      </div>
+    </a>
+    <a class="toc-item" href="#s8">
+      <span class="toc-num">08</span>
+      <div class="toc-content">
+        <div class="toc-title">Quantum Change &amp; Post-Traumatic Growth</div>
+        <div class="toc-desc">Controlled confrontations, epiphanies, and sudden lasting identity shifts</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- SECTION 1: TTM -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="section-num">01</span>
+        <div class="section-icon s1">🗺️</div>
+      </div>
+      <div class="section-title-block">
+        <div class="section-tag s1" style="padding:3px 10px;border-radius:4px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;">Stage-Based Intervention</div>
+        <h2 class="section-title">Transtheoretical Model (TTM)</h2>
+        <p class="section-subtitle">Clinical interventions that move individuals from precontemplation to contemplation without triggering resistance</p>
+      </div>
+    </div>
+
+    <p>Developed by James Prochaska and Carlo DiClemente from a 1983 smoking cessation study, the Transtheoretical Model (TTM) has become what the British Journal of Health Psychology called "arguably the dominant model of health behavior change." Its central insight: people are not either motivated or unmotivated — they occupy one of five distinct stages, each requiring a fundamentally different intervention.</p>
+
+    <div class="callout callout-amber">
+      <p><strong>The 40-40-20 Rule:</strong> Research by Velicer et al. found that in any at-risk population, roughly 40% are in precontemplation, 40% in contemplation, and only 20% in the preparation stage. Standard action-based interventions, designed for the final 20%, systematically fail the other 80%.</p>
+    </div>
+
+    <h3>The Precontemplation Trap</h3>
+
+    <p>Precontemplation is defined not merely by inaction, but by a specific cognitive posture: the individual does not believe a problem exists, or has tried to change and concluded change is impossible. Research shows that people in this stage actively defend their behavior and become more resistant when pressure is applied — a clinical pattern consistent with psychological reactance theory.</p>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="stat">22%</div>
+        <div class="stat-label">Precontemplators who quit smoking in a 6-month action-oriented program</div>
+        <div class="source">Krebs et al., cited in NCBI StatPearls</div>
+      </div>
+      <div class="evidence-card">
+        <div class="stat">76%</div>
+        <div class="stat-label">Individuals already in the action stage who quit smoking in the same program</div>
+        <div class="source">Krebs et al., cited in NCBI StatPearls</div>
+      </div>
+      <div class="evidence-card">
+        <div class="stat">85%</div>
+        <div class="stat-label">Of those who relapse return to contemplation or preparation, not precontemplation</div>
+        <div class="source">NCBI StatPearls, TTM Review</div>
+      </div>
+    </div>
+
+    <h3>Evidence-Based Interventions for Precontemplation</h3>
+
+    <p>The clinical literature is unambiguous: confrontational styles are counterproductive in precontemplation. Research on problem drinkers by Miller and colleagues showed that an empathetic therapist style predicted decreased drinking, while a confrontational style predicted increased drinking. The goal at this stage is not behavioral change — it is cognitive shift.</p>
+
+    <div class="mechanism-list">
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--amber-mid);"></div>
+        <p><strong>Consciousness-Raising:</strong> Gently expanding awareness of the issue and its consequences without creating defensiveness. This uses non-confrontational information delivery and reflective questioning rather than persuasion.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--amber-mid);"></div>
+        <p><strong>Decisional Balance Exploration:</strong> Research across 48 behaviors and 100+ populations shows that in precontemplation, the perceived cons of changing consistently outweigh the pros. The intervention task is to authentically increase the perceived pros — not dismiss the cons.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--amber-mid);"></div>
+        <p><strong>Environmental Reevaluation:</strong> Helping the individual understand how their behavior affects others and their environment. This leverages social self-concept without direct threat to personal identity.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--amber-mid);"></div>
+        <p><strong>Life-Stage Prompting:</strong> Milestone moments (illness, marriage, birthday, divorce) naturally catalyze reevaluation. Research shows that when people enter a new life stage, they critically evaluate whether existing behaviors still serve them.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-amber">
+      <p><strong>Core Clinical Rule:</strong> Stage-matched interventions are more effective than non-matched interventions. The most promising outcomes come from proactive, individualized, computer-based or highly personalized delivery — treating a precontemplator like a preparation-stage individual produces harm, not progress.</p>
+    </div>
+
+    <div class="process-flow">
+      <div class="process-step"><div class="step-num">Stage 1</div><div class="step-name">Precontemplation</div></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step"><div class="step-num">Stage 2</div><div class="step-name">Contemplation</div></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step"><div class="step-num">Stage 3</div><div class="step-name">Preparation</div></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step"><div class="step-num">Stage 4</div><div class="step-name">Action</div></div>
+      <div class="process-arrow">→</div>
+      <div class="process-step"><div class="step-num">Stage 5</div><div class="step-name">Maintenance</div></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: MI -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="section-num">02</span>
+        <div class="section-icon s2">🗣️</div>
+      </div>
+      <div class="section-title-block">
+        <div class="section-tag s2" style="padding:3px 10px;border-radius:4px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;">Conversational Method</div>
+        <h2 class="section-title">Motivational Interviewing (MI)</h2>
+        <p class="section-subtitle">How developing discrepancy and evoking change talk allows individuals to become the authors of their own transformation</p>
+      </div>
+    </div>
+
+    <p>First described by W.R. Miller in 1983 and refined with Stephen Rollnick, Motivational Interviewing is a "person-centered, goal-oriented style of communication with particular focus on expressions of change." Its defining insight is that motivation cannot be installed from outside — it must be evoked from within. The clinician's job is not to argue for change, but to create the conditions under which the client argues for it themselves.</p>
+
+    <blockquote>
+      "The goal is to increase personal motivation for and commitment to behavior change by eliciting and intensifying a person's own reasons for change in an atmosphere of acceptance and empathy."
+      <cite>— Miller &amp; Rollnick, Motivational Interviewing (2013 ed.)</cite>
+    </blockquote>
+
+    <h3>The Central Mechanism: Developing Discrepancy</h3>
+
+    <p>Developing discrepancy is the process of helping clients perceive the gap between their current behavior and their own stated values, goals, and desired self-image — not between their behavior and the clinician's standards. This distinction is critical. When discrepancy is externally imposed, it triggers reactance. When it is internally recognized, it generates intrinsic motivation.</p>
+
+    <div class="callout callout-teal">
+      <p><strong>Key technique:</strong> "You said it's important to you to be present for your family. How does that sit alongside how things have been lately?" — This is the clinician using the client's own language to surface a discrepancy the client already holds but hasn't yet fully confronted.</p>
+    </div>
+
+    <h3>DARN-CAT: The Language of Change</h3>
+
+    <p>MI identifies two categories of change talk that predict behavioral outcomes. Research reviews found that client change talk/intention and client experience of discrepancy were the two most consistent predictors of better outcomes across clinical populations.</p>
+
+    <div class="mechanism-list">
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--teal-mid);"></div>
+        <p><strong>Preparatory Change Talk (DARN):</strong> Desire ("I want to..."), Ability ("I could..."), Reasons ("It would help if..."), Need ("I have to...") — these signal ambivalence beginning to resolve.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--teal-mid);"></div>
+        <p><strong>Mobilizing Change Talk (CAT):</strong> Commitment ("I will..."), Activation ("I'm ready to..."), Taking Steps ("I've started...") — these predict actual behavioral change.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--teal-mid);"></div>
+        <p><strong>Rolling with Resistance:</strong> MI reframes resistance as information, not opposition. A dismissive tone or directive response amplifies resistance — reflective listening and double-sided reflection reduce it.</p>
+      </div>
+    </div>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="stat">OR 1.55</div>
+        <div class="stat-label">Overall odds ratio for MI effectiveness vs. standard care across all behavioral health domains</div>
+        <div class="source">Meta-analysis, PMC 2021</div>
+      </div>
+      <div class="evidence-card">
+        <div class="stat">80%</div>
+        <div class="stat-label">More effective than advice-giving alone in clinical settings</div>
+        <div class="source">TherapyByPro MI review</div>
+      </div>
+      <div class="evidence-card">
+        <div class="stat">15 min</div>
+        <div class="stat-label">Minimum session length where MI has demonstrated clinical effectiveness</div>
+        <div class="source">Clinical review of brief MI interventions</div>
+      </div>
+    </div>
+
+    <p>Significant effect sizes were found for substance use, physical activity, dental hygiene, body weight, treatment adherence, and mortality. Studies of the factors that contribute to MI's efficacy suggest it exerts its effects largely through the selective reinforcement of the clients' own statements about potential change — making the client the author, not the audience, of their transformation narrative.</p>
+  </div>
+
+  <!-- SECTION 3: COGNITIVE DISSONANCE -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="section-num">03</span>
+        <div class="section-icon s3">⚖️</div>
+      </div>
+      <div class="section-title-block">
+        <div class="section-tag s3" style="padding:3px 10px;border-radius:4px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;">Psychological Tension</div>
+        <h2 class="section-title">Cognitive Dissonance Theory</h2>
+        <p class="section-subtitle">How the gap between held values and actual actions creates a psychological drive for realignment</p>
+      </div>
+    </div>
+
+    <p>Leon Festinger's 1957 theory proposes that human beings are driven by a fundamental need for internal consistency. When we hold two cognitions that psychologically conflict — "I value my health" and "I am harming my health" — we experience genuine psychological discomfort. This discomfort is not merely emotional; neuroimaging studies identify activation in the anterior cingulate cortex (dACC), anterior insula, and dorsolateral prefrontal cortex (DLPFC) during dissonance states.</p>
+
+    <div class="callout callout-purple">
+      <p><strong>The Action-Motivation Model:</strong> Inconsistencies in a person's cognition cause mental stress because psychological inconsistency interferes with the person's ability to function effectively in the real world. This framing explains why dissonance is so powerfully motivating — it isn't just uncomfortable, it represents a threat to adaptive functioning.</p>
+    </div>
+
+    <h3>The Three Resolution Strategies (and How to Steer Them)</h3>
+
+    <p>When an individual experiences cognitive dissonance, they have three options: change their behavior to align with their values, change their belief to rationalize the behavior, or reduce the importance of the conflicting cognition. In behavior change work, the art is creating dissonance conditions where behavioral change is the path of least resistance — more achievable than rationalization.</p>
+
+    <div class="mechanism-list">
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--purple);"></div>
+        <p><strong>Induced Hypocrisy Technique:</strong> Research shows that having individuals publicly commit to a value, then recall occasions when they violated that value, creates productive dissonance. Studies on pro-environmental behavior and health behaviors show this two-step process reliably produces behavioral change when behavioral change is made clearly possible.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--purple);"></div>
+        <p><strong>Dissonance-Based Interventions (DBIs):</strong> In eating disorder prevention research, DBIs had participants voluntarily argue against the thin ideal — a counterattitudinal stance that created dissonance between the argument and their prior beliefs. Studies found significantly greater reductions in thin-ideal internalization than information-only controls, demonstrating the dissonance component was essential to the effect.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--purple);"></div>
+        <p><strong>Vicarious Hypocrisy:</strong> Cooper's research shows dissonance can be generated vicariously — when someone closely identified with a social group observes a group member's hypocrisy, they bolster their own intentions to act consistently. This has been applied successfully in health promotion contexts.</p>
+      </div>
+    </div>
+
+    <h3>Critical Design Principle</h3>
+
+    <p>Cognitive dissonance is a powerful motivator but a double-edged tool. Research consistently shows that when behavioral change is made difficult or impossible, the individual will instead change their beliefs to rationalize the status quo. The intervention environment must make the desired change feel clearly achievable — otherwise dissonance resolves in the wrong direction.</p>
+
+    <div class="callout callout-purple">
+      <p><strong>Festinger's Warning (paraphrased):</strong> "Tell someone they disagree and they turn away. Show them facts or figures and they question your sources. But confront them with an inconsistency between their own stated values and their own observable behavior, and they must resolve it — they cannot simply ignore it."</p>
+    </div>
+  </div>
+
+  <!-- SECTION 4: IDENTITY -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="section-num">04</span>
+        <div class="section-icon s4">🧬</div>
+      </div>
+      <div class="section-title-block">
+        <div class="section-tag s4" style="padding:3px 10px;border-radius:4px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;">Identity Architecture</div>
+        <h2 class="section-title">Identity-Based Habit Change &amp; Self-Expansion</h2>
+        <p class="section-subtitle">Why reframing change as "becoming more of who you are" outperforms goal-based approaches in long-term follow-through</p>
+      </div>
+    </div>
+
+    <p>The convergence of Daphna Oyserman's Identity-Based Motivation (IBM) model, James Clear's synthesis in Atomic Habits, and Aron's Self-Expansion Theory creates one of the most robust frameworks in behavioral science: identity precedes and sustains behavior more reliably than goals do. When a behavior is tied to an identity, it becomes an expression of self rather than an exercise of willpower.</p>
+
+    <blockquote>
+      "Every action you take is a vote for the type of person you wish to become. No single instance will transform your beliefs, but as the votes accumulate, so does the evidence of your new identity."
+      <cite>— James Clear, Atomic Habits (2018)</cite>
+    </blockquote>
+
+    <h3>The IBM Model: Dynamic Construction</h3>
+
+    <p>Oyserman's research reveals that identity-to-behavior links are dynamically constructed in context — which identities come to mind and what they imply in a given moment depends heavily on environmental cues. This has a critical implication: change interventions can make identity-congruent behaviors more accessible simply by cueing the relevant identity at the moment of behavioral choice.</p>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="stat">r = 0.33</div>
+        <div class="stat-label">Correlation between self-identity and past behavior in meta-analysis of theory of planned behavior</div>
+        <div class="source">Rise et al. (2010), meta-analysis</div>
+      </div>
+      <div class="evidence-card">
+        <div class="stat">3 Loops</div>
+        <div class="stat-label">Identity → action → evidence → reinforced identity: a positive feedback loop that becomes self-sustaining</div>
+        <div class="source">Identity-Based Motivation, Oyserman</div>
+      </div>
+    </div>
+
+    <h3>Identity Expansion, Not Identity Replacement</h3>
+
+    <p>Aron's Self-Expansion Theory proposes that humans are fundamentally motivated to expand the self — to include new resources, perspectives, and characteristics. Framing change as identity expansion (you are becoming more of yourself) rather than identity replacement (you must abandon who you are) taps directly into this intrinsic motivational source.</p>
+
+    <div class="mechanism-list">
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--coral);"></div>
+        <p><strong>Language Reframing:</strong> "I am a healthy person" vs. "I am trying to lose weight." Identity statements activate self-consistency bias — the brain seeks evidence confirming the stated identity, creating an attentional and motivational advantage over outcome-focused framing.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--coral);"></div>
+        <p><strong>Difficulty-as-Importance Reframe:</strong> IBM research found that students who interpreted difficulty as evidence that the task mattered to them (not as evidence of inability) generated more goal-relevant behavior and better performance. This is a trainable cognitive reframe with documented effects.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--coral);"></div>
+        <p><strong>Group Identity Anchoring:</strong> Joining a group whose values and identity align with the desired behavior is one of the most empirically supported strategies for identity-based change. The group functions as a continuous, ambient identity cue and provides social self-concept support.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--coral);"></div>
+        <p><strong>Vote-Based Accumulation:</strong> Small consistent actions create cumulative evidence for a new self-concept. Resistance to one missed action becomes much lower when the identity is already well-established through accumulated behavioral evidence.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: SDT -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="section-num">05</span>
+        <div class="section-icon s5">🌱</div>
+      </div>
+      <div class="section-title-block">
+        <div class="section-tag s5" style="padding:3px 10px;border-radius:4px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;">Intrinsic Motivation</div>
+        <h2 class="section-title">Self-Determination Theory (SDT)</h2>
+        <p class="section-subtitle">How satisfying three universal psychological needs transforms controlled motivation into autonomous motivation — and negative states into empowered ones</p>
+      </div>
+    </div>
+
+    <p>Developed by Edward Deci and Richard Ryan over 40+ years of research, Self-Determination Theory identifies three universal, innate psychological needs whose satisfaction or frustration explains the quality of human motivation across cultures, ages, and contexts. When all three needs are met, people exhibit autonomous motivation — sustained, volitional engagement driven by personal meaning. When they are thwarted, motivation becomes controlled (driven by pressure, fear, or external contingency) or collapses entirely.</p>
+
+    <div class="mechanism-list">
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--blue);"></div>
+        <p><strong>Autonomy:</strong> The need to experience one's actions as self-directed and consistent with one's genuine self. Supporting autonomy means acknowledging a person's perspective, providing a meaningful rationale for change, and — critically — refraining from pressure and control. When autonomy is thwarted, even intrinsically motivated behaviors erode.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--blue);"></div>
+        <p><strong>Competence:</strong> The need to experience mastery and efficacy in interaction with the environment. This is built through optimally challenging tasks — difficult enough to engage, achievable enough to provide success experiences. SDT researchers distinguish this from performance pressure, which undermines competence need satisfaction.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--blue);"></div>
+        <p><strong>Relatedness:</strong> The need to feel connected and cared for by significant others in the context where change is occurring. Research in Singapore's secondary schools (N=1,549) found that relatedness was the strongest predictor of autonomous motivation — even more so than autonomy support in that context.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-blue">
+      <p><strong>Clinical sequence (from SDT medical education research):</strong> Begin with relatedness — build psychological safety. Transition to competence — offer targeted growth feedback. Close with autonomy — invite choice and reflection. This sequence reduces defensiveness, builds belief in capacity, and installs a sense of agency. The result: a person who feels seen, capable, and in control.</p>
+    </div>
+
+    <h3>From Negative State to Empowered</h3>
+
+    <p>SDT articulates the darker side of need thwarting explicitly: the frustration of autonomy, competence, and relatedness needs underlies depression, aggression, and psychopathology. This provides the mechanism by which a supportive change context is itself therapeutic — it is not merely pleasant but need-restorative. The meta-analysis of SDT-based health interventions found significant effects on motivation, health behavior, physical health, and psychological well-being.</p>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="stat">40+</div>
+        <div class="stat-label">Years of research across education, healthcare, sport, parenting, and workplace contexts</div>
+        <div class="source">SDT.org, Ryan &amp; Deci review</div>
+      </div>
+      <div class="evidence-card">
+        <div class="stat">6</div>
+        <div class="stat-label">Mini-theories within SDT, each validated independently across contexts</div>
+        <div class="source">Deci &amp; Ryan, selfdeterminationtheory.org</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: BEHAVIORAL ECONOMICS -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="section-num">06</span>
+        <div class="section-icon s6">⚖️</div>
+      </div>
+      <div class="section-title-block">
+        <div class="section-tag s6" style="padding:3px 10px;border-radius:4px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;">Decision Architecture</div>
+        <h2 class="section-title">Status Quo Bias &amp; Loss Aversion</h2>
+        <p class="section-subtitle">Making the cost of not changing visible — and reframing freedom as a gain, not a risk</p>
+      </div>
+    </div>
+
+    <p>Samuelson and Zeckhauser first formally defined status quo bias in 1988: the tendency to prefer the current state of affairs even when alternatives are objectively superior. Kahneman and Tversky's Prospect Theory provides the mechanism: losses feel approximately twice as psychologically powerful as equivalent gains. Together, these two findings explain much of why people remain in situations they consciously wish to leave.</p>
+
+    <div class="callout callout-green">
+      <p><strong>The Core Asymmetry:</strong> People will tolerate a known, current pain longer than they will risk a potential, unknown future pain — even when the current pain is objectively worse. Status quo bias is not irrationality; it is rational risk-aversion applied to the wrong reference point.</p>
+    </div>
+
+    <h3>The Cost of Staying the Same</h3>
+
+    <p>The most powerful behavioral economics insight for change work is reframing the choice. The default framing presents change as risky and the status quo as safe. But the status quo has a cost — it simply accrues slowly and invisibly. Rendering the cost of inaction vivid and concrete is one of the most evidence-supported interventions in this literature.</p>
+
+    <div class="mechanism-list">
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--green);"></div>
+        <p><strong>Loss Reframing:</strong> Kahneman and Tversky's research shows penalty-framed interventions are sometimes more effective than reward frames. The website Stickk leverages this by allowing users to commit to change with real financial stakes — the loss of money becomes the motivational engine.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--green);"></div>
+        <p><strong>Inaction Cost Vivification:</strong> Making the future cost of staying the same as vivid and concrete as the present cost of changing rebalances the decision architecture. People systematically underweight slowly-accruing costs (health decline, relationship erosion) compared to immediately visible transition costs.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--green);"></div>
+        <p><strong>Reducing Transition Costs:</strong> Because status quo bias is partially driven by transaction costs and uncertainty, reducing the perceived difficulty of the first step has disproportionate effects. Default enrollment, opt-out rather than opt-in framing, and pre-commitment devices all exploit this mechanism.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--green);"></div>
+        <p><strong>Regret Anticipation:</strong> Kahneman and Tversky's observation that people feel greater regret for bad outcomes from action than inaction is a source of status quo bias. But future self-simulation — vividly imagining regret for having stayed the same — can reactivate this mechanism in favor of change.</p>
+      </div>
+    </div>
+
+    <h3>The Unfamiliarity of Freedom</h3>
+
+    <p>An underappreciated dimension of status quo bias is that the current situation, however painful, is known. Change represents a step into genuine uncertainty. This is not weakness — it is adaptive caution applied in a context where its costs outweigh its benefits. Effective change interventions do not dismiss this fear; they acknowledge it while making the unfamiliar more legible and achievable.</p>
+  </div>
+
+  <!-- SECTION 7: MIRROR NEURONS / SOCIAL MODELING -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="section-num">07</span>
+        <div class="section-icon s7">🪞</div>
+      </div>
+      <div class="section-title-block">
+        <div class="section-tag s7" style="padding:3px 10px;border-radius:4px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;">Social Neuroscience</div>
+        <h2 class="section-title">Social Modeling &amp; Mirror Neurons</h2>
+        <p class="section-subtitle">How watching someone similar to you make the change activates the neural substrate for "I can do this too"</p>
+      </div>
+    </div>
+
+    <p>Mirror neurons — first described in macaque premotor cortex in 1992 — fire both when an action is performed and when it is observed. In humans, a distributed mirror neuron system (MNS) spanning supplementary-motor and temporoparietal areas supports action understanding, empathy, and the simulation of others' intentions. While the exact functional role of human mirror neurons remains debated, the broader behavioral literature on social modeling is unambiguous: observing others engage in a behavior dramatically affects self-efficacy and motivation to attempt the same behavior.</p>
+
+    <div class="callout callout-amber" style="border-color:#9c7a14;background:#faf3e0;">
+      <p><strong>Bandura's Model-Observer Similarity Principle:</strong> The impact of observed behavior on the observer's self-efficacy and motivation is greatest when the model is perceived as similar to the observer. This is the mechanism behind peer support groups, testimonials, and "proximal models" — not the elite or the already-transformed, but the person who was where you are and is now one step ahead.</p>
+    </div>
+
+    <h3>Proximal Models vs. Expert Models</h3>
+
+    <p>Research on modeling methods and mirror neuron activity found that self-modeling (observing oneself performing the behavior, even at early stages) produced greater mirror neuron activation than observing an expert model. This suggests that model-observer similarity is neurologically significant — not just psychologically. The closer the model to the observer's current state, the stronger the neural simulation and the more robust the self-efficacy response.</p>
+
+    <div class="mechanism-list">
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:#9c7a14;"></div>
+        <p><strong>Proximal Models:</strong> People at a slightly more advanced stage of change than the observer. Research on peer mentorship, AA sponsorship models, and peer support programs demonstrates that proximity — not expertise — drives the greatest increases in readiness to change.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:#9c7a14;"></div>
+        <p><strong>Self-Modeling:</strong> Video feedback of the individual performing even nascent versions of the desired behavior can activate mirror neuron networks more strongly than observing experts. In Clark &amp; Ste-Marie's research, self-regulatory processes including self-efficacy and intrinsic motivation were triggered by observing mastery experiences — even one's own beginnings of mastery.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:#9c7a14;"></div>
+        <p><strong>Vicarious Reinforcement:</strong> Observing a peer receive positive outcomes from behavioral change activates vicarious expectancy — the observer's brain simulates the reward experience. This is the neurological substrate for the power of testimonials, stories, and the classic "someone like me did it."</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:#9c7a14;"></div>
+        <p><strong>Empathic Attunement:</strong> MNS research shows that the mirror system is active during the observation of emotional expressions, not just physical actions. Witnessing the emotional relief, freedom, and growth of someone who has changed creates empathic simulation of those states — making the desired future feel neurologically real.</p>
+      </div>
+    </div>
+
+    <p>An important caveat: the neuroscientific claims about mirror neurons remain more contested than the behavioral modeling literature itself. The power of observational learning, social comparison, and peer modeling is strongly supported by decades of Bandura's social learning research independently of the mirror neuron mechanism. The neuroscience provides a compelling mechanism hypothesis; the behavioral effects are the established empirical ground.</p>
+  </div>
+
+  <!-- SECTION 8: QUANTUM CHANGE -->
+  <div class="section" id="s8">
+    <div class="section-header">
+      <div class="section-badge">
+        <span class="section-num">08</span>
+        <div class="section-icon s8">⚡</div>
+      </div>
+      <div class="section-title-block">
+        <div class="section-tag s8" style="padding:3px 10px;border-radius:4px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;">Transformative Events</div>
+        <h2 class="section-title">Quantum Change &amp; Post-Traumatic Growth</h2>
+        <p class="section-subtitle">The evidence for sudden, lasting, identity-level transformation — and how controlled confrontations can replicate the conditions that produce it</p>
+      </div>
+    </div>
+
+    <p>William Miller and Janet C'de Baca's landmark 2001 research collected 55 accounts of what they termed "quantum change" — defined as "a vivid, surprising, benevolent, and enduring personal transformation." Unlike incremental change, quantum change involves a discontinuous shift in core values, priorities, and self-concept, often occurring over hours rather than months. Crucially, these changes proved durable across follow-up.</p>
+
+    <blockquote>
+      "Change need not only be gradual and cumulative; it can also be discontinuous, sudden, and rapid. Change happens in a heartbeat."
+      <cite>— Diana Fosha, Journal of Clinical Psychology (2006)</cite>
+    </blockquote>
+
+    <h3>Two Types of Quantum Change</h3>
+
+    <div class="mechanism-list">
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--purple);"></div>
+        <p><strong>Insight Transformation:</strong> A consolidation of psychological processes that may have been building for years, crystallizing into sudden clarity. The person recognizes previously unconscious or avoided aspects of self and sees new possibilities for action. This type responds to carefully structured confrontation — creating the conditions for insight without forcing it.</p>
+      </div>
+      <div class="mechanism-item">
+        <div class="mechanism-dot" style="background:var(--purple);"></div>
+        <p><strong>Mystical Transformation:</strong> A felt shift in core values and priorities that individuals often cannot articulate through ordinary causal explanation. Research finds highly consistent themes: liberation, a sense of presence, profound reorientation of life priorities (relationships, spirituality, meaning elevated; status, achievement, material goals reduced).</p>
+      </div>
+    </div>
+
+    <h3>Post-Traumatic Growth (PTG)</h3>
+
+    <p>PTG research — spanning natural disasters, illness, trauma, and near-death experiences — documents that the struggle to cope with a traumatic event can lead to positive personal change: new possibilities, personal strength, spiritual growth, enhanced relationships, and greater appreciation of life. Tedeschi and Calhoun's framework shows PTG is not the absence of distress, but the coexistence of distress and growth.</p>
+
+    <div class="callout callout-purple">
+      <p><strong>The paradox of controlled confrontation:</strong> Research on psychedelic-assisted therapy, intensive clinical interventions, and AEDP (Accelerated Experiential Dynamic Psychotherapy) shows that controlled, safe confrontations with avoided emotional material can produce quantum-change-like effects — rapid identity reorganization in the context of therapeutic attachment security. The intervention creates conditions where quantum change becomes possible, not forced.</p>
+    </div>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="stat">55</div>
+        <div class="stat-label">Spontaneous quantum change accounts collected from a general population newspaper ad — not clinical or religious settings</div>
+        <div class="source">Miller &amp; C'de Baca (2001)</div>
+      </div>
+      <div class="evidence-card">
+        <div class="stat">Durable</div>
+        <div class="stat-label">Quantum change effects were documented as lasting across follow-up assessments, distinguishing it from temporary insight</div>
+        <div class="source">Miller &amp; C'de Baca (2001)</div>
+      </div>
+      <div class="evidence-card">
+        <div class="stat">5 Domains</div>
+        <div class="stat-label">PTG changes occur across: new possibilities, personal strength, relating to others, appreciation of life, and spiritual growth</div>
+        <div class="source">Tedeschi &amp; Calhoun, PTG model</div>
+      </div>
+    </div>
+
+    <p>The significance for change process design is profound: incremental models need not be the only model. When the conditions are right — safety, confrontation with avoided truths, emotional authenticity, relational support — the human psyche is capable of reorganizing around a new identity with surprising speed. The task is not to force this, but to create the precise conditions that make it possible.</p>
+  </div>
+
+</div>
+
+<!-- SYNTHESIS -->
+<div class="synthesis">
+  <div style="max-width:860px;margin:0 auto;padding:0 60px;">
+    <p style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,238,218,0.45);font-weight:600;margin-bottom:20px;">Research Synthesis</p>
+    <h2>A Unified Process Model</h2>
+    <p>These eight frameworks are not competing theories — they describe different layers of the same phenomenon. Arranged sequentially, they map a complete architecture for transformative change that applies universally across populations and starting points.</p>
+
+    <div class="process-model" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12);margin:36px 0;">
+      <div class="pm-header" style="background:rgba(255,255,255,0.05);color:rgba(250,250,248,0.45);border-color:rgba(255,255,255,0.1);">Eight-stage universal change architecture</div>
+
+      <div class="pm-stage" style="border-color:rgba(255,255,255,0.08);">
+        <div class="pm-num" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(250,238,218,0.5);">1</div>
+        <div class="pm-content">
+          <span class="pm-tag tag-ttm">TTM · Stage Diagnosis</span>
+          <p class="pm-stage-title" style="color:var(--paper);">Meet them where they are</p>
+          <p class="pm-stage-desc" style="color:rgba(250,250,248,0.6);">Before any intervention, diagnose stage of change. The 40-40-20 rule means most people need precontemplation or contemplation interventions — not action-stage tools. Stage-mismatched interventions produce harm.</p>
+        </div>
+      </div>
+
+      <div class="pm-stage" style="border-color:rgba(255,255,255,0.08);">
+        <div class="pm-num" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(250,238,218,0.5);">2</div>
+        <div class="pm-content">
+          <span class="pm-tag tag-sdt">SDT · Relatedness First</span>
+          <p class="pm-stage-title" style="color:var(--paper);">Create safety before confrontation</p>
+          <p class="pm-stage-desc" style="color:rgba(250,250,248,0.6);">Relatedness need satisfaction reduces defensiveness and opens cognitive space for honest examination. Without psychological safety, every subsequent intervention is filtered through threat-detection.</p>
+        </div>
+      </div>
+
+      <div class="pm-stage" style="border-color:rgba(255,255,255,0.08);">
+        <div class="pm-num" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(250,238,218,0.5);">3</div>
+        <div class="pm-content">
+          <span class="pm-tag tag-cd">Cognitive Dissonance · Values Activation</span>
+          <p class="pm-stage-title" style="color:var(--paper);">Surface the values gap — gently, using their own language</p>
+          <p class="pm-stage-desc" style="color:rgba(250,250,248,0.6);">Help the individual articulate what they deeply value, then surface the discrepancy between those values and current behavior. The dissonance must be felt — not argued. Induced hypocrisy technique operationalizes this.</p>
+        </div>
+      </div>
+
+      <div class="pm-stage" style="border-color:rgba(255,255,255,0.08);">
+        <div class="pm-num" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(250,238,218,0.5);">4</div>
+        <div class="pm-content">
+          <span class="pm-tag tag-mi">Motivational Interviewing · Change Talk</span>
+          <p class="pm-stage-title" style="color:var(--paper);">Evoke self-generated reasons for change</p>
+          <p class="pm-stage-desc" style="color:rgba(250,250,248,0.6);">Once dissonance is activated, MI techniques draw out the person's own change talk (DARN-CAT). They become the advocate for their own transformation. This is not persuasion — it is facilitated self-discovery.</p>
+        </div>
+      </div>
+
+      <div class="pm-stage" style="border-color:rgba(255,255,255,0.08);">
+        <div class="pm-num" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(250,238,218,0.5);">5</div>
+        <div class="pm-content">
+          <span class="pm-tag tag-be">Behavioral Economics · Rebalance the Ledger</span>
+          <p class="pm-stage-title" style="color:var(--paper);">Make the cost of staying visible</p>
+          <p class="pm-stage-desc" style="color:rgba(250,250,248,0.6);">Loss aversion and status quo bias make the present feel safer than it is. Vivifying the cost of inaction — making it specific, personal, and temporally proximate — rebalances the decision architecture toward action.</p>
+        </div>
+      </div>
+
+      <div class="pm-stage" style="border-color:rgba(255,255,255,0.08);">
+        <div class="pm-num" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(250,238,218,0.5);">6</div>
+        <div class="pm-content">
+          <span class="pm-tag tag-social">Social Modeling · Possibility Proof</span>
+          <p class="pm-stage-title" style="color:var(--paper);">Show them someone like them who has changed</p>
+          <p class="pm-stage-desc" style="color:rgba(250,250,248,0.6);">Proximal models activate the neural simulation of change and provide vicarious self-efficacy. The goal is not inspiration — it is the felt sense of "this is possible for me."</p>
+        </div>
+      </div>
+
+      <div class="pm-stage" style="border-color:rgba(255,255,255,0.08);">
+        <div class="pm-num" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(250,238,218,0.5);">7</div>
+        <div class="pm-content">
+          <span class="pm-tag tag-identity">Identity · Expansion Not Replacement</span>
+          <p class="pm-stage-title" style="color:var(--paper);">Reframe change as becoming more fully themselves</p>
+          <p class="pm-stage-desc" style="color:rgba(250,250,248,0.6);">Anchor early action to identity, not outcomes. "The kind of person who..." framing activates self-consistency bias in favor of the new behavior. Each action becomes evidence for a new self-concept, not a task to be completed.</p>
+        </div>
+      </div>
+
+      <div class="pm-stage" style="border-color:rgba(255,255,255,0.08);">
+        <div class="pm-num" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(250,238,218,0.5);">8</div>
+        <div class="pm-content">
+          <span class="pm-tag tag-quantum">Quantum Change · Controlled Confrontation</span>
+          <p class="pm-stage-title" style="color:var(--paper);">Create conditions for rapid identity reorganization</p>
+          <p class="pm-stage-desc" style="color:rgba(250,250,248,0.6);">For some people, at some moments, the conditions are ripe for quantum change. Safe confrontation with avoided emotional truth — in a context of deep relational support — can precipitate sudden, lasting shifts. The intervention creates the container; the transformation is the person's own.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>The Thread That Runs Through All Eight</h3>
+    <p>Every framework here converges on a single principle: <em style="color:var(--amber-light);">genuine change is not imposed from outside but evoked from within.</em> The clinician, coach, or process designer is not the change agent — the person is. The external role is to create the precise conditions under which intrinsic motivation can crystallize, identity can expand, and the cost of staying the same finally outweighs the unfamiliarity of freedom.</p>
+
+    <p>This is why confrontational, pressure-based, or advice-driven approaches consistently fail where empathic, discrepancy-surfacing, autonomy-supporting ones succeed. The research does not just describe what works — it reveals <em style="color:var(--amber-light);">why</em> it works at the level of neural mechanism, cognitive architecture, and the fundamental structure of human motivation.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">My 12 Journeys — Certified Giant Coaching · Research synthesized from 40+ peer-reviewed sources across behavioral science, clinical psychology, neuroscience, and behavioral economics</div>
+  <div class="footer-right">My 12 Journeys · Giant Guide Resource</div>
+</div>
+
+</body>
+</html>
